@@ -1,3 +1,4 @@
-node_modules
-bootstrap
-vendor
+*
+/*
+.gitignore
+.git/info/exclude
