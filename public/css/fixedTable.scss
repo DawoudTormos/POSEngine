@@ -1,0 +1,80 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.table-fixed{
+ //
+}
+.table-fixed tbody {
+    height: 700px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+    display: block;
+}
+
+.table-fixed tbody td,
+.table-fixed tbody th,
+.table-fixed thead > tr > th {
+    float: left;
+    position: relative;
+    
+
+    &::after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+.table-fixed thead > tr > th {
+    font-size:0.8vw;
+    @media (min-width:991px) {
+        font-size:1vw;
+    }
+   @media (min-width:1200px) {
+       font-size:1.1vw
+   }
+   @media (min-width:1600px) {
+       font-size:0.9vw
+   }
+   text-align: center;
+}
+.table-fixed tbody tr td{
+    font-size:0.8vw;
+    @media (min-width:991px) {
+        font-size:0.85vw;
+    }
+   @media (min-width:1200px) {
+       font-size:1vw
+   }
+   @media (min-width:1600px) {
+    font-size:0.9vw
+}
+    text-align: center;
+}
+.table-fixed tbody tr th:nth-child(1){
+    font-size:1rem; 
+    text-align: left;
+}
+.table-fixed thead > tr > th:nth-child(1){
+    
+    text-align: left;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+

@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+  }
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Fonts
+@import "/storage/fonts/googleapis/NunitoFamily.css";
+
+
+//font-awesome
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+//font-awesome icons
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+.pointer_hand{
+    cursor: pointer;
+}
+

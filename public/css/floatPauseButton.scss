@@ -1,0 +1,61 @@
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:20px;
+	left:20px;
+	background-color:var(--bs-dark);;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	text-decoration: none;
+	
+	&:hover{
+		color:white;
+		cursor: pointer;
+	}
+
+	
+	
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+// for the new button
+.float_2{
+	position:fixed;
+	width:100px;
+	height:60px;
+	bottom:20px;
+	right:20px;
+	background-color:var(--bs-dark);;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	text-decoration: none;
+	&:hover{
+		color:white;
+		cursor: pointer;
+	}
+	
+}
+
+
+
+.dot-green {
+	height: 10px;
+	width: 10px;
+	background-color: rgb(0, 209, 0);
+	border-radius: 50%;
+	display: inline-block;
+  }
+  
+  .dot-blue {
+	height: 10px;
+	width: 10px;
+	background-color: rgb(0, 38, 209);
+	border-radius: 50%;
+	display: inline-block;
+  }
