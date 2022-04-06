@@ -1,0 +1,20 @@
+.even{
+    background-color: white !important;
+   
+
+}
+
+
+.odd{
+    background-color: whitesmoke !important;
+   
+
+}
+
+.odd , .even{
+    cursor: pointer;
+    
+    &:hover{
+        background-color: #ddd !important ;
+    }
+}

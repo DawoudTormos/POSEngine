@@ -17458,6 +17458,21 @@ readers do not read off random characters that represent icons */
   width: auto;
 }
 
+.even {
+  background-color: white !important;
+}
+
+.odd {
+  background-color: whitesmoke !important;
+}
+
+.odd, .even {
+  cursor: pointer;
+}
+.odd:hover, .even:hover {
+  background-color: #ddd !important;
+}
+
 .pointer_hand {
   cursor: pointer;
 }
