@@ -78,6 +78,25 @@ var currentProductInfo;
 ///6
 var fun6 = (catID , brandID , productID,bool = false)=>{
 
+
+///Remove previous alert boxes 
+
+  if($("#save-loading").hasClass("d-flex") == true){
+                 $("#save-loading").addClass("d-none");
+                 $("#save-loading").removeClass("d-flex");
+                  }
+                  if($("#saveSuccess").hasClass("d-flex") == true){
+                                $("#saveSuccess").removeClass('d-flex');
+                                $("#saveSuccess").addClass("d-none");
+                                }
+
+                   if($("#saveError").hasClass("d-flex") == true){
+                  $("#saveError").removeClass('d-flex');
+                 $("#saveError").addClass("d-none");
+                   }
+
+
+
         currentProductInfo = _.cloneDeep(allProductsObject[catID][brandID][productID]);
         //there is also= _.clone(obj);;
 
@@ -227,6 +246,7 @@ var pc2 ='" style="display:block;"><th scope="col" class=" td-class justify-cont
      var cat ,brand;                       
                             var keys;
                             var dataForDataTable = [];
+                            var tablexy ;
 var Cat_Brand;
 var productsTableSelector = ".table-responsive .table.table-fixed tbody";
 var fun5 = (catID , brandID , bool = false)=>{
@@ -309,6 +329,11 @@ var fun5 = (catID , brandID , bool = false)=>{
                 tablexy = {};
                 $("#productsListTable").html("")
             }
+
+
+
+
+
     tablexy = $('#productsListTable').DataTable( {
         data: dataForDataTable,
          // "dom": 'Bfrtip',
@@ -346,6 +371,23 @@ var fun5 = (catID , brandID , bool = false)=>{
 
 
     } );
+
+
+    
+    /// making the rows clickable
+
+     $('#productsListTable tbody').on('click', 'tr', function () {
+        var datad = tablexy.row( this ).data();
+        //alert( 'You clicked on '+datad[0]+'\'s row' );
+
+        fun6(Cat_Brand[datad[0]].category_id    ,    Cat_Brand[datad[0]].brand_id    ,    datad[0])
+    } );
+
+
+
+
+
+
 } );
 
         
