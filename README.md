@@ -1,3 +1,18 @@
+<h3>Notes by the developer Dawoud:
+To download and run this app</h3>
+<ul>
+  <li>You have to have composer and npm installed.</li>
+  <li>Run the command "npm i" make npm read the package.json file and download all the needed dependencies in node_modules folder.</li>
+  <li>Run the command "composer install" to make composer download all the needed dependencies in vendor folder.</li>
+  <li>you haver to run "npm run dev " or "npm run production" in order to compile assests that are found in folders with .gitignore files and thus wasn't uploaded.</li>
+  <li>something</li>
+
+
+
+</ul>
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
