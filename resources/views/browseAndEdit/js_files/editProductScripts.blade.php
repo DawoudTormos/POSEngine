@@ -242,12 +242,22 @@ var fun6 = (catID , brandID , productID,bool = false)=>{
 
 var pc1 = '<tr id="';
 //product id
-var pc2 ='" style="display:block;"><th scope="col" class=" td-class justify-content-start" width="11.3%"  style="height:50px;" ><span class="id-cell"></span></th><td scope="col" class=" td-class" width="16%"  style="height:50px;" ><span class="product_name-cell"></span></td><td scope="col" class=" td-class" width="16%"  style="height:50px;" ><span class="baracode-cell"></span></td><td scope="col" class=" td-class" width="11.3%"  style="height:50px;" ><span class="base_price-cell"></span></td><td scope="col" class=" td-class" width="15.3%"  style="height:50px;" ><span class="currency_base-cell"></span></td><td scope="col" class=" td-class" width="10.3%"  style="height:50px;" ><span class="profit_type-cell"></span></td><td scope="col" class=" td-class" width="10.3%"  style="height:50px;" ><span class="profit-cell"></span></td><td scope="col" class=" td-class" width="9.3%" style="height:50px;"><button class="btn btn-primary">Edit</button></td></tr>'
+var pc2 ='" style="display:block;"><th scope="col" class=" td-class justify-content-start" width="11.3%"  style="height:50px;" ><span class="id-cell">';
+
+var pc3 = '</span></th><td scope="col" class=" td-class" width="16%"  style="height:50px;" ><span class="product_name-cell">';
+var pc4= '</span></td><td scope="col" class=" td-class" width="16%"  style="height:50px;" ><span class="baracode-cell">';
+var  pc5 = '</span></td><td scope="col" class=" td-class" width="11.3%"  style="height:50px;" ><span class="base_price-cell">';
+var pc6 ='</span></td><td scope="col" class=" td-class" width="15.3%"  style="height:50px;" ><span class="currency_base-cell">';
+var pc7 = '</span></td><td scope="col" class=" td-class" width="10.3%"  style="height:50px;" ><span class="profit_type-cell">';
+var pc8 = '</span></td><td scope="col" class=" td-class" width="10.3%"  style="height:50px;" ><span class="profit-cell">';
+var pc9 = '</span></td><td scope="col" class=" td-class" width="9.3%" style="height:50px;"><button class="btn btn-primary" onclick="';
+var pc10 = '">Edit</button></td></tr>';
      var cat ,brand;                       
                             var keys;
                             var dataForDataTable = [];
                             var tablexy ;
 var Cat_Brand;
+var test_string;
 var productsTableSelector = ".table-responsive .table.table-fixed tbody";
 var fun5 = (catID , brandID , bool = false)=>{
 
@@ -259,7 +269,7 @@ var fun5 = (catID , brandID , bool = false)=>{
         // remove the previous table
         $(".table-responsive .table.table-fixed").html('');
 
-       if(Object.keys(allProductsObject[catID][brandID]).length < 75 ){
+       if(Object.keys(allProductsObject[catID][brandID]).length < 7500 ){
 
             if ( $.fn.dataTable.isDataTable( '#productsListTable' ) ){
                 tablexy.destroy();
@@ -282,8 +292,10 @@ var fun5 = (catID , brandID , bool = false)=>{
         $(productsTableSelector).html("")
 
         //append each product
+        test_string="";
         keys.forEach((itemx,indexx)=>{
-            $(productsTableSelector).append(pc1 + Cat_Brand[itemx].id+pc2)
+            test_string += pc1 + Cat_Brand[itemx].id+pc2+Cat_Brand[itemx].id+pc3+Cat_Brand[itemx].product_name+pc4+Cat_Brand[itemx].baracode+pc5+Cat_Brand[itemx].unit_price+pc6+Cat_Brand[itemx].currency_base+pc7+Cat_Brand[itemx].profit_type+pc8+Cat_Brand[itemx].profit_percentage+pc9+'fun6('+Cat_Brand[itemx].category_id+','+Cat_Brand[itemx].brand_id+','+Cat_Brand[itemx].id+ ')' +pc10;
+           /* $(productsTableSelector).append(pc1 + Cat_Brand[itemx].id+pc2)
             $("tr#" + Cat_Brand[itemx].id + " th span.id-cell").html(Cat_Brand[itemx].id)
         $("tr#" + Cat_Brand[itemx].id + " td span.product_name-cell").html(Cat_Brand[itemx].product_name)
         $("tr#" + Cat_Brand[itemx].id + " td span.baracode-cell").html(Cat_Brand[itemx].baracode)
@@ -296,10 +308,11 @@ var fun5 = (catID , brandID , bool = false)=>{
         
         if(Cat_Brand[itemx].group_bool == 1){
             $("tr#" + Cat_Brand[itemx].id + " td span.product_name-cell").append(" <span style='color:blue'>(group)</span>")
-        }
+        }*/
         
         })
         
+        $(productsTableSelector).append(test_string )
  
        }else{
            
