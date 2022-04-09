@@ -28,6 +28,15 @@
 {{----}}
 
 
+
+
+
+
+
+
+
+
+
 {{-- modal popup--}}
 <!-- Button trigger modal -->
 <button hidden type="button" id="csrf1Button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#csrf1">
@@ -55,6 +64,15 @@
 
 
 {{----}}
+
+
+
+
+
+
+
+
+
 
 
 

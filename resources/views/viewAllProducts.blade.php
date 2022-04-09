@@ -53,6 +53,11 @@
 </div>
 </div>
 
+
+
+@include('components.bootstrapModals')
+
+
 @endsection
 
 

@@ -269,7 +269,7 @@ var fun5 = (catID , brandID , bool = false)=>{
         // remove the previous table
         $(".table-responsive .table.table-fixed").html('');
 
-       if(Object.keys(allProductsObject[catID][brandID]).length < 7500 ){
+       if(Object.keys(allProductsObject[catID][brandID]).length < 75){
 
             if ( $.fn.dataTable.isDataTable( '#productsListTable' ) ){
                 tablexy.destroy();
@@ -294,7 +294,13 @@ var fun5 = (catID , brandID , bool = false)=>{
         //append each product
         test_string="";
         keys.forEach((itemx,indexx)=>{
-            test_string += pc1 + Cat_Brand[itemx].id+pc2+Cat_Brand[itemx].id+pc3+Cat_Brand[itemx].product_name+pc4+Cat_Brand[itemx].baracode+pc5+Cat_Brand[itemx].unit_price+pc6+Cat_Brand[itemx].currency_base+pc7+Cat_Brand[itemx].profit_type+pc8+Cat_Brand[itemx].profit_percentage+pc9+'fun6('+Cat_Brand[itemx].category_id+','+Cat_Brand[itemx].brand_id+','+Cat_Brand[itemx].id+ ')' +pc10;
+            test_string += pc1 + Cat_Brand[itemx].id+pc2+Cat_Brand[itemx].id+pc3+Cat_Brand[itemx].product_name;
+
+            if(Cat_Brand[itemx].group_bool == 1){
+            test_string += " <span style='color:blue'> (group)</span>";
+        }
+            
+            test_string += pc4+Cat_Brand[itemx].baracode+pc5+Cat_Brand[itemx].unit_price+pc6+Cat_Brand[itemx].currency_base+pc7+Cat_Brand[itemx].profit_type+pc8+Cat_Brand[itemx].profit_percentage+pc9+'fun6('+Cat_Brand[itemx].category_id+','+Cat_Brand[itemx].brand_id+','+Cat_Brand[itemx].id+ ')' +pc10;
            /* $(productsTableSelector).append(pc1 + Cat_Brand[itemx].id+pc2)
             $("tr#" + Cat_Brand[itemx].id + " th span.id-cell").html(Cat_Brand[itemx].id)
         $("tr#" + Cat_Brand[itemx].id + " td span.product_name-cell").html(Cat_Brand[itemx].product_name)
@@ -322,7 +328,13 @@ var fun5 = (catID , brandID , bool = false)=>{
         keys.forEach((item , index)=>{
 
             window.product = Cat_Brand[item];
-            dataForDataTable.push([product.id ,product.product_name , product.unit_price, product.baracode , product.category_id+" - "+product.brand_id]);
+
+            currentdatax = [product.id ,product.product_name , product.unit_price, product.baracode , product.category_id+" - "+product.brand_id];
+
+                if(product.group_bool == 1){
+             currentdatax[1] += " <span style='color:blue'> (group)</span>";
+        }
+            dataForDataTable.push(currentdatax);
 
             
 

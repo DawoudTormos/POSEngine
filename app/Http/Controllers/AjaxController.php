@@ -299,6 +299,7 @@ class AjaxController extends Controller
         $idArray=[];
         
          foreach($productsWithId as $productx){
+             
             array_push($idArray , $productx->id);
 
         }
@@ -337,19 +338,19 @@ class AjaxController extends Controller
                                 echo "Deleted Succesfully!";
                             
 
-                            DB::table('products_history_log')
+                            DB::table('deleted_products')
                                  ->insert(['id'=> $productsWithId[0]->id,
-                                           'product_name'=>"DELETED!".$productsWithId[0]->product_name,
+                                           'product_name'=>$productsWithId[0]->product_name,
                                            'baracode'=>$productsWithId[0]->baracode,
                                            'unit_price' =>$productsWithId[0]->unit_price,
                                            'profit_percentage'=>$productsWithId[0]->profit_percentage,
-                                           'profit_type'=>"DELETED!".$productsWithId[0]->profit_type,
+                                           'profit_type'=>$productsWithId[0]->profit_type,
                                            'size'=>0,
                                            'category_id'=>$productsWithId[0]->category_id,
                                            'brand_id'=>$productsWithId[0]->brand_id,
-                                           'currency_base'=>"DELETED!".$productsWithId[0]->currency_base,
+                                           'currency_base'=>$productsWithId[0]->currency_base,
                                            'group_bool'=>$productsWithId[0]->group_bool,
-                                           'group_baracodes'=>"DELETED!".$productsWithId[0]->group_baracodes,
+                                           'group_baracodes'=>$productsWithId[0]->group_baracodes,
 
 
                                ]);

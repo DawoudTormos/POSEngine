@@ -25,7 +25,8 @@ var funDelete = (idToDelete)=>{
             $("#"+idToDelete).closest("tr").attr('style', 'background-color: #ee8080 !important');
             $("#button-"+idToDelete).attr('disabled', '');
             $("#button-"+idToDelete).removeClass("btn-danger");
-            $("#button-"+idToDelete).css("cursor" , "not-allowed");
+            $("#button-"+idToDelete).css("cursor" , "default");
+            $("#"+idToDelete).closest("tr").css("cursor" , "not-allowed")
 
             $("#"+idToDelete).html("<span class=' fw-bold text-danger'>Deleted<span>");
         }
@@ -37,7 +38,10 @@ var funDelete = (idToDelete)=>{
         
         
     error:  function (xhr , status , error) {
+        //included error-xhr-modals
+        $("#button-"+idToDelete).css("cursor" , "pointer");
     @include("errors/error-xhr-modals")
+
      }
         });
 
