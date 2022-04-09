@@ -205,7 +205,34 @@ class PagesController extends Controller
                                                                
     }
 
-    
+    public function viewAll(){
+        $allProducts = DB::table('products')->get();
+        $assocArrayAllProducts = [];
+        
+        foreach($allProducts as  $product){
+            $currentProduct=[];
+            $currentProduct += [$product->product_name,
+                            $product->baracode,
+                            $product->unit_price,
+                            $product->currency_base,
+                            $product->profit_percentage,
+                            $product->profit_type,
+                            $product->size,
+                            $product->category_id,
+                            $product->brand_id,
+                            $product->group_bool,
+                            $product->group_baracodes,
+                            $product->added_at
+                            ];
+            $assocArrayAllProducts += [$product->id => $currentProduct];
+            
+            }
+
+        //echo "<br><br> ----------<br><br>";
+
+        return view('viewAllProducts')->with('allProducts', json_encode($assocArrayAllProducts));
+
+    }
     
 
 }

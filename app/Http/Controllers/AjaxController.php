@@ -284,6 +284,83 @@ class AjaxController extends Controller
           ]);
     }
 
+
+
+
+
+    //delete product
+
+    public function deleteProduct(Request $req){
+
+        $productsWithId =DB::table('products') /// supposedly ONE
+        ->where('id',  $req->id)
+        ->get();
+
+        $idArray=[];
+        
+         foreach($productsWithId as $productx){
+            array_push($idArray , $productx->id);
+
+        }
+        $idArrayJson =json_encode($idArray);
+        
+        if($productsWithId->count() > 1 ){
+
+
+            DB::table('errors_log') /// supposedly ONE
+                ->insert([
+                    
+                    'error_title' => "Duplicate IDs",
+                    'involved_products' => $idArrayJson,
+                    'error_description'=> "error added by AjaxController::deleteProduct.\n While deleting a product with an id = ".$req->id.", the id was used by ".$productsWithId->count()." enteries."
+                    
+                ]);
+                
+            
+            echo  "Several Entries with same ID.\nError added to database's log of errors.\n";
+            
+            return null;
+        }
+        
+       
+
+
+        DB::table('products')
+        ->where('id', $req->id)
+        ->delete();
+
+        $checkIfFound = DB::table('products')
+                            ->where('id', $req->id)->get();
+                            
+
+                            if($checkIfFound->count() == 0){
+                                echo "Deleted Succesfully!";
+                            
+
+                            DB::table('products_history_log')
+                                 ->insert(['id'=> $productsWithId[0]->id,
+                                           'product_name'=>"DELETED!".$productsWithId[0]->product_name,
+                                           'baracode'=>$productsWithId[0]->baracode,
+                                           'unit_price' =>$productsWithId[0]->unit_price,
+                                           'profit_percentage'=>$productsWithId[0]->profit_percentage,
+                                           'profit_type'=>"DELETED!".$productsWithId[0]->profit_type,
+                                           'size'=>0,
+                                           'category_id'=>$productsWithId[0]->category_id,
+                                           'brand_id'=>$productsWithId[0]->brand_id,
+                                           'currency_base'=>"DELETED!".$productsWithId[0]->currency_base,
+                                           'group_bool'=>$productsWithId[0]->group_bool,
+                                           'group_baracodes'=>"DELETED!".$productsWithId[0]->group_baracodes,
+
+
+                               ]);
+        
+        }
+
+
+    }
+
+
+
    //public function familyNunito(Request $req){
      //   return view('localResources/familyNunito',['req' =>$req]);
    // } /* didn't work  with php rendering. GET import(stylefont.css) worked*/

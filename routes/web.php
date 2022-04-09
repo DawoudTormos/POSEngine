@@ -43,6 +43,7 @@ Route::any('getCategories',[AjaxController::class , 'getCategories'])->name('get
 Route::any('getBrands',[AjaxController::class , 'getBrands'])->name('getBrands');
 
 Route::any('editProductInfo',[PagesController::class , 'editProductInfo'])->name('editProductInfo');
+Route::any('viewAll',[PagesController::class , 'viewAll'])->name('viewAll');
 
 //insteadOf the above you can use Route::any;
 //get a product 
@@ -59,6 +60,12 @@ Route::any('checkBaracodesConflict',[AjaxController::class , 'checkBaracodesConf
 
 // for showing the $_POST request sent
 Route::any('test',[PagesController::class , 'test'])->name('test');
+
+
+
+//delete
+Route::any('deleteProduct',[AjaxController::class , 'deleteProduct'])->name('deleteProduct');
+
 
 
 Route::any('addProduct-post',[PagesController::class , 'addProduct_post'])->name('addProduct-post');

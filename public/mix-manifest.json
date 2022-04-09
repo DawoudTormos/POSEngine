@@ -6,5 +6,6 @@
     "/js/test.js": "/js/test.js",
     "/storage/DataTables/pdfmake-unicode/pdfmake.min.js": "/storage/DataTables/pdfmake-unicode/pdfmake.min.js",
     "/storage/DataTables/pdfmake-unicode/pdfmake.min.js.map": "/storage/DataTables/pdfmake-unicode/pdfmake.min.js.map",
-    "/storage/DataTables/jszip/jszip.min.js": "/storage/DataTables/jszip/jszip.min.js"
+    "/storage/DataTables/jszip/jszip.min.js": "/storage/DataTables/jszip/jszip.min.js",
+    "/js/viewAll/viewAll_script.js": "/js/viewAll/viewAll_script.js"
 }
