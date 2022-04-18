@@ -4,11 +4,11 @@
 
 !.gitignore
 #.gitignore
-.git/info/exclude
+#.git/info/exclude
 node_modules
 vendor
-bootstrap
-
+!bootstrap
+# why /bootstrap isn't gitignored explained down there 
 
 /node_modules
 /public/hot
@@ -25,3 +25,20 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+
+
+####added on 12-4-2022  from a ggogle search####
+
+#cache contains already compiled views but seemingly its not present in laravel 8 
+/bootstrap/compiled.php
+
+/build/logs
+/build/coverage
+
+npm-debug.log
+yarn-error.log
+
+/app/tests/_log
+
+# There is a .gitignore placed in bootstrap/cache that already ignores the cache so no need to gitignore the /bootstrap
