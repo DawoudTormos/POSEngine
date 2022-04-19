@@ -1,13 +1,23 @@
 @php
 
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  $data = trim($data);
+  return $data;
+}
+
+
+
 $product = json_decode($req->input("productInfo") , true) ;
 
-    $id = $product['id'];
+    $id = test_input($product['id']);
 
-  $product_name = $product["product_name"];  
-    $group_bool = $product["group_bool"];   
-  $baracode = $product["baracode"];   
-  $group_baracodes = $product["group_baracodes"]; 
+  $product_name = test_input($product["product_name"]);  
+    $group_bool = test_input($product["group_bool"]);   
+  $baracode = test_input($product["baracode"]);   
+  $group_baracodes = test_input($product["group_baracodes"]); 
 
 
   
@@ -31,9 +41,9 @@ $response->oldproductsCausingConflict=array(); // or =[];
 
 
 
-    $sql_get_similar_productName= " SELECT * FROM `products` WHERE product_name= '$product_name' ";
+    $sql_get_similar_productName= " SELECT * FROM `products` WHERE product_name= '$product_name' and  id != $id";
  $query3=mysqli_query($DB,$sql_get_similar_productName);
- $count3= 0;//mysqli_num_rows($query3);
+ $count3= mysqli_num_rows($query3);
 
  while($result3 = $query3->fetch_array(MYSQLI_ASSOC)){
          if ($result3['id'] != $id){
@@ -62,7 +72,7 @@ $response->oldproductsCausingConflict=array(); // or =[];
 
 
 
-      $sql_get_product= " SELECT * FROM `products` WHERE baracode= '$baracode' OR baracode= $baracode";
+      $sql_get_product= " SELECT * FROM `products` WHERE baracode= '$baracode' ";
  $query1=mysqli_query($DB,$sql_get_product);
  $count= mysqli_num_rows($query1);
  
@@ -80,7 +90,7 @@ $response->oldproductsCausingConflict=array(); // or =[];
 
 
 
- $sql_get_product2= " SELECT * FROM `products` WHERE FIND_IN_SET('$baracode', group_baracodes) OR FIND_IN_SET($baracode, group_baracodes)";
+ $sql_get_product2= " SELECT * FROM `products` WHERE FIND_IN_SET('$baracode', group_baracodes) ";
  $query2=mysqli_query($DB,$sql_get_product2);
  $count2= mysqli_num_rows($query2);
 

@@ -1,5 +1,13 @@
 @php
 
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  $data = trim($data);
+  return $data;
+}
+
 class Product {
 public $baracode ; 
 public $productName;
@@ -14,10 +22,10 @@ public $currentDollarRate;
 public $groupBool;
 public $groupBaracodes;
 };
-$baracode = $request->input('baracode');
+$baracode = test_input($request->input('baracode'));
 
 
- $sql_get_product= " SELECT * FROM `products` WHERE baracode= $baracode OR baracode= '$baracode'";
+ $sql_get_product= " SELECT * FROM `products` WHERE baracode= '$baracode' /*OR baracode= $baracode */";
  $query1=mysqli_query($DB,$sql_get_product);
  $count= mysqli_num_rows($query1);
  $result= $query1->fetch_array(MYSQLI_ASSOC);
@@ -25,7 +33,7 @@ $baracode = $request->input('baracode');
  
 
 
- $sql_get_product2= " SELECT * FROM `products` WHERE FIND_IN_SET($baracode, group_baracodes) or FIND_IN_SET('$baracode', group_baracodes)";
+ $sql_get_product2= " SELECT * FROM `products` WHERE /* FIND_IN_SET($baracode, group_baracodes) or */  FIND_IN_SET('$baracode', group_baracodes)";
  $query2=mysqli_query($DB,$sql_get_product2);
  $count2= mysqli_num_rows($query2);
  $result2= $query2->fetch_array(MYSQLI_ASSOC);
