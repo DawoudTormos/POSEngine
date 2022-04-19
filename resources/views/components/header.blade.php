@@ -35,7 +35,9 @@ $tabs = ["POS","Pricing"] ;
 
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="{{route('AddProduct')}}">Add Product</a></li>
-           <li><a class="dropdown-item" href="{{route('editProductInfo')}}">View Products</a></li>
+           <li><a class="dropdown-item" href="{{route('editProductInfo')}}">View Invetory</a></li>
+            <li><a class="dropdown-item" href="{{route('viewAll')}}">View ALL Products</a></li>
+
           </ul>
 
 
