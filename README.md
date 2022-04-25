@@ -5,11 +5,47 @@ To download and run this app</h3>
   <li>Run the command "npm i" make npm read the package.json file and download all the needed dependencies in node_modules folder.</li>
   <li>Run the command "composer install" to make composer download all the needed dependencies in vendor folder.</li>
   <li>you haver to run "npm run dev " or "npm run production" in order to compile assests that are found in folders with .gitignore files and thus wasn't uploaded.</li>
-  <li>something</li>
+  <li>To make backup-larvel work you should edit the dump_binary_path in config/database.php. This path is usually /xampp/mysql/bin/ for xampp.</li>
+<li> 
+    <ul>To configure the path to where backups are saved:</ul>
+      <li>You should configure a disk in config/filesystems.php, give a DISKNAME and assign the path you want to it</li>
+      <li>You should assign the DISKNAME to the property disks of the key 'destination' in backup.php.</li>
 
+
+
+</li>
+
+  <li>You have to scedule running laravel-backup  with laravel schedular in Base_Path/app/console/kernel.php. Then run the scedular localy or with php cron. Check laravel documentation.</li>
+
+</ul>
+
+
+<h3> Requirements</h3>
+<ul>
+  <li>The php version used in development and proven to work is 8.1.2</li>
+  <li>The app is built on Laravel Framework 8.77.1 but this doesn't require who wants to install it to do anything.</li>
+  <li>The version of all the required packages are included in the composer.json package.json </li>
+  
 
 
 </ul>
+
+
+<h4>Files for laravel-backup </h4>
+<pre>
+#####   files for laravel-backup
+!resources/lang/vendor/backup
+\config\backup.php
+
+## they were copied as following:
+#                                   Copied File [\vendor\spatie\laravel-backup\config\backup.php] To [\config\backup.php]
+#                                   Copied Directory [\vendor\spatie\laravel-backup\resources\lang] To [\resources\lang\vendor\backup]
+#
+#   by this command:: php artisan vendor:publish --provider="Spatie\Backup\BackupServiceProvider"
+
+#   After installing the laravel-backup package with    composer require "spatie/laravel-backup:^7.0.0"
+
+</pre>
 
 
 
