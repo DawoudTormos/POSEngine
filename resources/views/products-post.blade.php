@@ -12,8 +12,8 @@
 <!-- post "</h1> <script>alert('200');</script> <h1>" in the serach bar to do a simple hack -->
 @include('components.header')
 
-@include('tools.check_method')
-
+{{---@include('tools.check_method')
+--}}
 
 <!--will be redirected -->
 
