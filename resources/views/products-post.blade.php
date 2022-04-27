@@ -4,6 +4,13 @@
 @section('css')
 <link href="{{ asset('css/floatPauseButton.css') }}" rel="stylesheet">
 <!-- the above floatPauseButton.css contains the .dot for indicating a product is in dollar -->
+
+<style>
+.highlightedRow{
+    background-color: #7fd9eb !important;
+    border:4px solid #009fff !important ;
+}
+</style>
 @endsection
 
 @section("section1")

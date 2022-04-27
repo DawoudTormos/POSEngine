@@ -118,10 +118,15 @@ $(
         success: function (data) {  
             
             if(data == "Not Found"){
+
                 $('#searchResult div').html("Not Found :-(");
                 $('#searchResult div').addClass('text-danger');
             $('#searchResult div').removeClass('text-success');
             $('#searchResult div').removeClass('text-warning');
+
+
+
+
 
             }else{
                  $('#searchResult div').html("Found!");
@@ -153,8 +158,11 @@ $(
 
                 if(data.currencyBase=="dollar"){
 
+                    dollarRate = data.currentDollarRate;
+
             data.unitPrice = data.unitPrice * dollarRate ;
             data.unitPrice = round(data.unitPrice);
+
 
 
             }else{
@@ -218,7 +226,10 @@ $(
                 animate11("#" + arr[i].id);
 
               
-              scrollParentToChild(document.getElementById("mainInvoice"), document.getElementById(arr[i].id)) 
+                scrollParentToChild(document.getElementById("mainInvoice"), document.getElementById(arr[i].id)) ;
+                $("tr").removeClass("highlightedRow");
+                $("#"+arr[i].id).addClass("highlightedRow");
+
                 i++;
                     }else{
                         
@@ -226,8 +237,11 @@ $(
                      $('#' + arr[foundi].id).children('#subTotal').html(addCommas(arr[foundi].sub()));
                      animate11("#" + arr[foundi].id);
                      
-                    scrollParentToChild(document.getElementById("mainInvoice"), document.getElementById(arr[foundi].id)) 
+                        scrollParentToChild(document.getElementById("mainInvoice"), document.getElementById(arr[foundi].id)) 
+                        $("tr").removeClass("highlightedRow");
+                        $("#" + arr[foundi].id).addClass("highlightedRow");
 
+                        console.log(arr[foundi].id)
                     }
               
               //calculating the sub-totals
