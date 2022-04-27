@@ -79,12 +79,20 @@ Route::get('/error-productFound',function(){
 }
 );
 
+
+
+
+
+
 Route::get('/csrf',function(){
     return view('php-scripts/csrf');
 }
 );
 
 Route::get('takeBackup',[AjaxController::class , 'takeBackup'])->name('takeBackup');
+
+
+
 
 
 Route::any('login',[UserController::class , 'login']

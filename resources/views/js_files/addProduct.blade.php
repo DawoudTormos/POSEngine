@@ -559,9 +559,9 @@ var tt1 = '<tr id="';
 //Baracode
 var tt2 = '"><td>';
 //Baracode
-var tt3 = '<button class=" btn-delete-custom btn btn-danger" onclick="deleteGroupBaracode(';
+var tt3 = '<button class=" btn-delete-custom btn btn-danger" onclick="deleteGroupBaracode(\'';
 //Baracode
-var tt4 = ')">delete</button></td></tr>';
+var tt4 = '\')">delete</button></td></tr>';
 
 $("#switch3").click(()=>{
 if($("#group-bool").val() == "false" ||$("#group-bool").val() == "False"){$("#group-bool").val("0") }
@@ -630,10 +630,14 @@ $($("#group-baracode-input").keydown(function(event) {
     }
 }))
 
-
+if (typeof baracode === 'undefined'){
+   var baracode;
+}
 
 var deleteGroupBaracode = (baracode)=>{
-    $("#" + baracode.toString()).remove()
+    console.log("#" + baracode.toString()+ " was deleted from the list of group baracodes in product: "+currentProductInfo.product_name);
+
+    $(    "#".concat(  baracode.toString()  )     ).remove();
     indexw = groupBaracodes.indexOf(baracode.toString())
     groupBaracodes.splice(indexw , 1)
     updateGroupBaracodes()

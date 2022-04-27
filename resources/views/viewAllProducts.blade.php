@@ -213,11 +213,11 @@ $(
     tablexy = $('#allProductsDataTable').DataTable( {
         data: dataForDataTable,
          // "dom": 'Bfrtip',
-        "scrollY":        "60vh",
+        //"scrollY":        "60vh",
         "scrollCollapse": false,
-        "paging":         false,
+        "paging":         true,
         "scrollX":true,
-        pageLength: 8,// scrollY: true,
+        pageLength: 14,// scrollY: true,
         
        
        
