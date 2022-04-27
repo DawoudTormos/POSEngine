@@ -67,7 +67,7 @@
 
 
 {{--  including the productsListInaBrand--}}
- @include('components.editProducts.productsListInaBrand')
+ @include('browseAndEdit.productsListInaBrand')
 
 
 

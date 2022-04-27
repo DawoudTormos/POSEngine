@@ -6,12 +6,12 @@
         <div class="col-3 my-5 mx-0 px-0 card rounded-0 border border-2  border-secondary"
              style="overflow-y:scroll"
              id="sideBarContainer">
-        @include('components.editProducts.browseProducts')
+        @include('browseAndEdit.browseProducts')
         </div>
 
 
         <div class="col-9 my-5 pt-2 mx-0 p-4 card rounded-0 border border-2 border-secondary border-start-0" id="editProductFormContainer">
-        @include('components.editProducts.editProductForm')
+        @include('browseAndEdit.editProductForm')
         </div>
 
  

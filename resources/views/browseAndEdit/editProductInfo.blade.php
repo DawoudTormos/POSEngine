@@ -107,7 +107,7 @@ padding:3px 6px;
 @include('tools.check_method')
 --}}
 
-@include('components.editProducts.editProductContainer')
+@include('browseAndEdit.editProductContainer')
 
 
 
