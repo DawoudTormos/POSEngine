@@ -70,6 +70,49 @@ setTimeout(function(){
 }, 20400000);// 5 hours & 40 minutes
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////// taking backup Automartically 
+
+
+
+setInterval(function(){ 
+
+
+
+ 	$.ajax({
+       url : '{{route("takeBackup")}}', //PHP file to execute
+       type : 'GET', //method used POST or GET
+       //data : , // Parameters passed to the PHP file
+       success : function(result){ // Has to be there !
+           
+       },
+
+       error : function(result, statut, error){ // Handle errors
+
+       }
+
+    });
+
+
+    
+}, 600000);
+
+
+
 </script>
 </body>
 </html>
