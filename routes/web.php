@@ -84,6 +84,9 @@ Route::get('/csrf',function(){
 }
 );
 
+Route::get('takeBackup',[AjaxController::class , 'takeBackup'])->name('takeBackup');
+
+
 Route::any('login',[UserController::class , 'login']
 )->name('login');
 

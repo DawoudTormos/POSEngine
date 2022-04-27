@@ -362,6 +362,29 @@ class AjaxController extends Controller
 
 
 
+
+
+
+    ///// take backup page    
+    
+    //takes backup only if no backup have been taken from 3 hours
+
+
+
+    public function takeBackup(){
+       
+        $lastBackup = DB::table('global_variables')->where('name','lastBackup')->get();
+        $DB = mysqli_connect( 'localhost' , 'root', '' , 'project1' )or die("cannot connect");
+         
+
+        return view('php-scripts/takeBackup',[ 
+            'lastBackup'=>$lastBackup,
+            'DB'=>$DB,
+          ]);
+    }
+
+
+
    //public function familyNunito(Request $req){
      //   return view('localResources/familyNunito',['req' =>$req]);
    // } /* didn't work  with php rendering. GET import(stylefont.css) worked*/
