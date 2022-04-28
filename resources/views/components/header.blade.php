@@ -18,15 +18,25 @@ $tabs = ["POS","Pricing"] ;
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
 
-        @php
-          
-        @endphp
+
+
+
+
+       
+       
         @foreach($tabs as $tab)
         <li id="{{$tab}}" class="nav-item">
 <a class="nav-link active mx-3" aria-current="page" href="#">
 {{$tab}}</a></li>
           
         @endforeach
+
+
+
+
+
+
+
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle mx-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,7 +48,14 @@ $tabs = ["POS","Pricing"] ;
            <li><a class="dropdown-item" href="{{route('editProductInfo')}}">View Invetory</a></li>
             <li><a class="dropdown-item" href="{{route('viewAll')}}">View ALL Products</a></li>
 
-          </ul>
+          </ul></li>
+
+
+
+
+
+
+
 
 
       
@@ -53,7 +70,7 @@ $tabs = ["POS","Pricing"] ;
             <li><a class="dropdown-item" href="{{route('ChangeDollar')}}">Edit global variables</a></li>
         <li><a class="dropdown-item" href="{{route('addCategoriesBrands')}}">Add Categories/Brands</a></li>
         
-          </ul>
+          </ul></li>
 
 
 

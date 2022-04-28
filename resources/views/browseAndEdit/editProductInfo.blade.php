@@ -91,6 +91,14 @@ padding:3px 6px;
 
   }
   #group-baracodes-table table tbody td { padding:5px 11px}
+
+  #tableInModal tr td{
+      
+     max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 </style>
 
 
@@ -182,5 +190,8 @@ $("title").html("Inventory");
 <script>
 $("li#POS a").attr("href" , "/products-post");
 $("li#Pricing a").attr("href" , "/changePrice");
+
 </script>
+@include('browseAndEdit.js_files.findProductInModalByBaracode')
+
 @endsection

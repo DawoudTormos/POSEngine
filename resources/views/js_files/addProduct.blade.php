@@ -635,7 +635,7 @@ if (typeof baracode === 'undefined'){
 }
 
 var deleteGroupBaracode = (baracode)=>{
-    console.log("#" + baracode.toString()+ " was deleted from the list of group baracodes in product: "+currentProductInfo.product_name);
+    console.log( baracode.toString()+ " was deleted from the list of group baracodes in product: "+currentProductInfo.product_name);
 
     $(    "#".concat(  baracode.toString()  )     ).remove();
     indexw = groupBaracodes.indexOf(baracode.toString())

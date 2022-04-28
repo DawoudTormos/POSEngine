@@ -19,6 +19,22 @@ class AjaxController extends Controller
 
     }//used for pos and changePrice pages
 
+    public function getProduct_post_Unrestricted(Request $req){
+
+        $baracode =  $req->input('baracode');
+
+        if ($baracode == '' || $baracode == 0){
+            echo "empty baracode sent!";
+            exit;
+        }
+       $result = DB::table('products')
+        ->whereRaw("baracode= '$baracode' || FIND_IN_SET('$baracode', group_baracodes)")
+        ->get();
+
+        return response()->json(json_encode($result));
+
+    }
+
     public function consoleLog_post(Request $request){  
          $DB = mysqli_connect( 'localhost' , 'root', '' , 'project1' )or die("cannot connect");
  

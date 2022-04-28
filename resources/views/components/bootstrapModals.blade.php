@@ -140,3 +140,146 @@
 
 
 {{----}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{---  custom bootstrap modal for getting a product byb baracode   ---}}
+{{-----}}
+{{-----}}
+{{-----}}
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#findByBaracodeModal">
+  Launch demo modal
+</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="findByBaracodeModal" tabindex="-1" aria-labelledby="findByBaracodeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl"> {{-- This line is changed from other modal so it is vertically centered--}}
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="findByBaracodeModalLabel">Find Product By Baracode</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+      
+
+
+
+
+
+     <div class="row d-flex searchbar-container justify-content-between mb-3">
+     
+
+   <form style="margin:0;" method="GET" class="main-search-input-wrap clearfix" id="getProductInModalByBaracode" action="{{route('products-post')}}{{--usless now with event.preventDefault.;--}}" >
+     <div class="main-search-input fl-wrap">
+         <div class="main-search-input-item"> 
+          @csrf 
+           <input type="text" name="name" id="inputBaracodeInModal" class="border border-dark" accesskey="w" value="" placeholder="Enter Baracode..."> 
+            </div> 
+           <input class="main-search-button" name="submit" value="Get Product" id="search-button"  type="submit" >
+     </div>
+ </form>
+
+
+</div>
+
+
+<table id="tableInModal" class="table table-bordered  ">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Baracode</th>
+      <th scope="col">Category</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Currency</th>
+      <th scope="col">View Product</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+     <td scope="col">ID</td>
+      <td scope="col">Product Name</td>
+      <td scope="col">Baracode</td>
+      <td scope="col">Category</td>
+      <td scope="col">Brand</td>
+      <td scope="col">Unit Price</td>
+      <td scope="col">Currency</td>
+</tr>
+
+
+<tr>
+       <td scope="col">ID</td>
+      <td scope="col">Product Name</td>
+      <td scope="col">Baracode</td>
+      <td scope="col">Category</td>
+      <td scope="col">Brand</td>
+      <td scope="col">Unit Price</td>
+      <td scope="col">Currency</td>
+</tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closeFindByBaracodeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{{-----}}
+{{-----}}
+{{-----}}

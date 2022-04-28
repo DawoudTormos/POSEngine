@@ -27,7 +27,12 @@
 <i accesskey="p" id="floatButton-i" class="fa fa-lg fa-pause my-float" title="Alt+P"></i>
 </a>
 
-<a onclick="" id="floatButton2" class="d-flex align-items-center justify-content-center float_2">
 
-<span style="font-size:16px;display:block">Search</span>    
+{{-- whenever the find button is clicked the form is submitted as seen below so the results are up to date with what have edited--}}
+<a onclick="$('#getProductInModalByBaracode').submit();" id="floatButton2" class="d-flex align-items-center justify-content-center float_2"
+ data-bs-toggle="modal" data-bs-target="#findByBaracodeModal"
+>
+
+<span style="font-size:16px;display:block">Find</span>   
+
 </a>

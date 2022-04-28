@@ -47,7 +47,8 @@ Route::any('viewAll',[PagesController::class , 'viewAll'])->name('viewAll');
 
 //insteadOf the above you can use Route::any;
 //get a product 
-Route::any('getProduct-post',[AjaxController::class , 'getProduct_post'])->name('getProduct-post');
+Route::post('getProduct-post',[AjaxController::class , 'getProduct_post'])->name('getProduct-post');
+Route::post('getProduct-post-Unrestricted',[AjaxController::class , 'getProduct_post_Unrestricted'])->name('getProduct-post-Unrestricted');
 Route::any('consoleLog-post',[AjaxController::class , 'consoleLog_post'])->name('consoleLog-post');
 
 
