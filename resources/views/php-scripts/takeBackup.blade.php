@@ -38,7 +38,7 @@ $totalHoursDiff   = $interval/60/60;
 
 if (abs($totalHoursDiff) > 3.2){
     echo "last backup was in more than 3 hours. A new backup will be created.";
-    system('php "C:/xampp/htdocs/Laravel Project 1/Laravel_project_1/artisan" backup:run --only-db"');
+    system('php "'.base_path().'/artisan" backup:run --only-db');
 
 
  $query = "Update global_variables set last_updated_at =  '".$currentDate->format("Y-m-d h:i:s")."' WHERE name = 'lastBackup'";
