@@ -36,8 +36,8 @@ $totalHoursDiff   = $interval/60/60;
  echo $totalHoursDiff."<br>" ;
 
 
-if (abs($totalHoursDiff) > 3.2){
-    echo "last backup was in more than 3 hours. A new backup will be created.";
+if (abs($totalHoursDiff) > 2){
+    echo "last backup was in more than 2 hours. A new backup will be created.";
     system('php "'.base_path().'/artisan" backup:run --only-db');
 
 
@@ -50,7 +50,7 @@ echo "<br>";
 
 
 }else{
-     echo "last backup was in less than 3 hours.";
+     echo "last backup was in less than 2 hours.";
     
 }
 

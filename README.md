@@ -29,7 +29,7 @@ To download and run this app</h3>
 
 
 </ul>
-
+<h5>A new command "logs:clear" is defined to delete laravel.log in the /storage/logs directory.The command is defined in routes/console.php</h5>
 
 <h4>Files for laravel-backup </h4>
 <pre>

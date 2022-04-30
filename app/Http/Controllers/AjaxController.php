@@ -213,16 +213,6 @@ class AjaxController extends Controller
     }
 
     public function getNonEmptyBrands(Request $req){
-
-        DB::table('products')
-        ->where('category_id', null)
-        ->update(['category_id' => 111]);
-
-        DB::table('products')
-        ->where('brand_id', null)
-        ->update(['brand_id' => 111]);
-
-
        $allCatBrandCombinations0 = json_decode($req->input('allCatBrandCombinations0') , true);
         $results = array();
 
