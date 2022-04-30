@@ -1,7 +1,7 @@
  <div class="nav nav-tabs d-flex align-items-center justify-content-center ">
   <h4 class="nav-item "style="margin:0.81rem 0">Categories / Brands</h4>
 </div>
-<div class="accordion accordion-flush" id="sidebar">
+<div class="accordion accordion-flush" style="height: calc(11px + 86vh) !important;  overflow-y:scroll" id="sidebar">
 
 
 

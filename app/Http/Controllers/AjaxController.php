@@ -120,14 +120,14 @@ class AjaxController extends Controller
 
 
     public function getCategories(Request $req){
-        $users = DB::table('categories')->get();
+        $cats = DB::table('categories')->get();
         $array1  = [];
         $array2  = [];
 
-        foreach ($users as $user){
+        foreach ($cats as $cat){
                 
-                array_push($array1 , $user->category_id);
-                array_push($array2 , $user->name);
+                array_push($array1 , $cat->category_id);
+                array_push($array2 , $cat->name);
                 
                 
                 }
@@ -139,14 +139,14 @@ class AjaxController extends Controller
 
     
     public function getBrands(Request $req){
-        $users = DB::table('brands')->get();
+        $brands = DB::table('brands')->get();
         $array1  = [];
         $array2  = [];
 
-        foreach ($users as $user){
+        foreach ($brands as $brand){
                 
-                array_push($array1 , $user->id);
-                array_push($array2 , $user->name);
+                array_push($array1 , $brand->id);
+                array_push($array2 , $brand->name);
                 
                 
                 }
@@ -213,6 +213,16 @@ class AjaxController extends Controller
     }
 
     public function getNonEmptyBrands(Request $req){
+
+        DB::table('products')
+        ->where('category_id', null)
+        ->update(['category_id' => 111]);
+
+        DB::table('products')
+        ->where('brand_id', null)
+        ->update(['brand_id' => 111]);
+
+
        $allCatBrandCombinations0 = json_decode($req->input('allCatBrandCombinations0') , true);
         $results = array();
 
@@ -223,7 +233,10 @@ class AjaxController extends Controller
                                  ->get();
            $results[$qqq] = array();//ME
         foreach($queryResults as $result){
-            $result->unit_price = (int)$result->unit_price;
+            if($result->currency_base == "lira" ){
+                $result->unit_price = (int)$result->unit_price;
+            }
+            
         $results[$qqq][$result->id] = $result;
     }
 
@@ -398,6 +411,32 @@ class AjaxController extends Controller
             'DB'=>$DB,
           ]);
     }
+
+
+
+
+    public function addCategoryOrBrand(Request $req){
+       
+
+        if ($req->has('newCategory') && $req->has('newBrand') == false) {
+            //
+       
+         DB::table('categories')->insert([
+            'name' => $req->input('newCategory')
+            
+        ]);
+        } else if ($req->has('newBrand') && $req->has('newCategory')==false){
+            DB::table('brands')->insert([
+                'name' => $req->input('newBrand')
+                
+            ]);
+        }
+
+
+
+        
+    }
+
 
 
 

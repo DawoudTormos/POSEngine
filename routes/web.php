@@ -74,6 +74,7 @@ Route::any('change-dollar',[PagesController::class , 'ChangeDollar'])->name('Cha
 Route::any('addCategoriesBrands',[PagesController::class , 'addCategoriesBrands'])->name('addCategoriesBrands');
 Route::post('change-dollar-post',[AjaxController::class , 'ChangeDollar_post'])->name('ChangeDollar_post');
 Route::post('change-defaultProfit-post',[AjaxController::class , 'change_defaultProfit_post'])->name('change-defaultProfit-post');
+Route::post('addCategoryOrBrand',[AjaxController::class , 'addCategoryOrBrand'])->name('addCategoryOrBrand');
 
 Route::get('/error-productFound',function(){
     return view('errors/error-productFound');

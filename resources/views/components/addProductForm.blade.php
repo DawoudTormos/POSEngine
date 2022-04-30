@@ -268,7 +268,7 @@
 
       <div class="col-md-5">
         <label for="validationServer05" class="form-label">Brand</label>
-        <select name="brand" type="text" class="form-select" id="brands" aria-describedby="validationServer05Feedback" >
+        <select name="brand" type="text" class="form-select" id="brands" aria-describedby="validationServer05Feedback"  required>
         <option value="" > </option>
         </select>
         

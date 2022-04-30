@@ -4,7 +4,7 @@
 
 
         <div class="col-3 my-5 mx-0 px-0 card rounded-0 border border-2  border-secondary"
-             style="overflow-y:scroll"
+             style="overflow-y:scroll     height: calc(63px + 86vh) !important;"
              id="sideBarContainer">
         @include('browseAndEdit.browseProducts')
         </div>

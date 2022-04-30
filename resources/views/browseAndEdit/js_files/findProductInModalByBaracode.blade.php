@@ -31,9 +31,9 @@
 
        },
 
-       error : function(data, statut, error){ // Handle errors
-
-       }
+      error:  function (xhr , status , error) {
+        @include("errors/error-xhr-modals")
+         }
 
     })
     })

@@ -1,8 +1,44 @@
 
 {{-- modal popup--}}
 <!-- Button trigger modal -->
+<button hidden type="button" id="errorModalButton"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#errorModal">
+
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="errorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Error!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="errorModalBody" class="modal-body">
+        Please Choose a Product First
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Understood</button>
+        {{--<button type="button" class="btn btn-primary">Understood</button>--}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{----}}
+
+
+
+
+
+
+
+
+
+{{-- modal popup--}}
+<!-- Button trigger modal -->
 <button hidden type="button" id="xhrButton"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#xhr">
-  Launch static backdrop modal
+
 </button>
 
 <!-- Modal -->
@@ -40,7 +76,7 @@
 {{-- modal popup--}}
 <!-- Button trigger modal -->
 <button hidden type="button" id="csrf1Button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#csrf1">
-  Launch static backdrop modal
+
 </button>
 
 <!-- Modal -->
@@ -81,7 +117,7 @@
 {{-- modal popup--}}
 <!-- Button trigger modal -->
 <button hidden type="button" id="csrf2Button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#csrf2">
-  Launch static backdrop modal
+
 </button>
 
 <!-- Modal -->
@@ -116,7 +152,7 @@
 {{-- modal popup--}}
 <!-- Button trigger modal -->
 <button hidden type="button" id="csrf3Button"class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#csrf3">
-  Launch static backdrop modal
+
 </button>
 
 <!-- Modal -->
@@ -232,27 +268,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr>
-     <td scope="col">ID</td>
-      <td scope="col">Product Name</td>
-      <td scope="col">Baracode</td>
-      <td scope="col">Category</td>
-      <td scope="col">Brand</td>
-      <td scope="col">Unit Price</td>
-      <td scope="col">Currency</td>
-</tr>
-
-
-<tr>
-       <td scope="col">ID</td>
-      <td scope="col">Product Name</td>
-      <td scope="col">Baracode</td>
-      <td scope="col">Category</td>
-      <td scope="col">Brand</td>
-      <td scope="col">Unit Price</td>
-      <td scope="col">Currency</td>
-</tr>
-
+ 
   </tbody>
 </table>
 

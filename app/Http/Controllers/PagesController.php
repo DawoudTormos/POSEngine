@@ -180,26 +180,58 @@ class PagesController extends Controller
 
 
     
-    public function addCategoriesBrands(){
+    public function addCategoriesBrands(Request $req){
         
-       $categories = DB::table('categories')->get('name');
-       $brands = DB::table('brands')->get('name');
-        $catsArray = [];
-        $brandsArray = [];
+       $categories = DB::table('categories')->orderBy('name', 'asc')->get(['name','category_id']);
+       $brands = DB::table('brands')->orderBy('name', 'asc')->get(['name','id']);
+        $catIDs = [];
+        $catNames = [];
+        $catCounts = [];
+
+        
+        $brandIDs = [];
+        $brandNames = [];
+        $brandCounts = [];
+
 
         foreach( $categories as $cat ){
-            array_push($catsArray, $cat->name);
-              
-        } 
-        foreach( $brands as $brand ){
-            array_push($brandsArray, $brand->name);
-              
-        } 
-        echo json_encode($catsArray);
-        echo "<br>";
-        echo json_encode($brandsArray);
 
-        return view('addCategoriesBrands',[ ]);
+            array_push($catIDs, $cat->category_id);
+            array_push($catNames, $cat->name);
+            array_push($catCounts, DB::table('products')->where('category_id', $cat->category_id)->count());
+
+
+              
+        } 
+
+        foreach( $brands as $brand ){
+            array_push($brandIDs, $brand->id);
+            array_push($brandNames, $brand->name);
+            array_push($brandCounts, DB::table('products')->where('brand_id', $brand->id)->count());
+
+              
+        } 
+
+        if($req->isMethod('post')){
+            $array =  [$catNames , $catIDs , $catCounts , $brandNames , $brandIDs , $brandCounts];
+            
+
+            return response()->json(json_encode($array));
+        }
+
+        echo "<script>var catNames=".json_encode($catNames).";"
+        ."var catIDs=".json_encode($catIDs).";"
+        ."var catCounts=".json_encode($catCounts).";"
+        ."var brandIDs=".json_encode($brandIDs).";"
+        ."var brandNames=".json_encode($brandNames).";"
+        ."var brandCounts=".json_encode($brandCounts).";"
+
+        ."</script>";
+
+        //echo "<br>";
+        
+
+        return view('addCategoriesBrands/addCategoriesBrands',[ ]);
                                   
                                   
                                                                
