@@ -559,7 +559,7 @@ var tt1 = '<tr id="';
 //Baracode
 var tt2 = '"><td>';
 //Baracode
-var tt3 = '<button class=" btn-delete-custom btn btn-danger" onclick="deleteGroupBaracode(\'';
+var tt3 = '<button class=" btn-delete-custom btn btn-danger" type="button" onclick="deleteGroupBaracode(\'';
 //Baracode
 var tt4 = '\')">delete</button></td></tr>';
 
@@ -635,7 +635,7 @@ if (typeof baracode === 'undefined'){
 }
 
 var deleteGroupBaracode = (baracode)=>{
-    console.log( baracode.toString()+ " was deleted from the list of group baracodes in product: "+currentProductInfo.product_name);
+    console.log( baracode.toString()+ " was deleted from the list of group baracodes");
 
     $(    "#".concat(  baracode.toString()  )     ).remove();
     indexw = groupBaracodes.indexOf(baracode.toString())

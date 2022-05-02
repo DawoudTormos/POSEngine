@@ -1,25 +1,32 @@
+<?php
 
-@php
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  $data = trim($data);
-  return $data;
-}
-echo "post request: <br><br>";
 
-$productName = test_input($request->input('productName'));
-$size = test_input($request->input('size'));
-$category_id = test_input($request->input('category'));
-$brand_id = test_input($request->input('brand'));
-$currency_base = test_input($request->input('currencyBase'));
-$profit_type = test_input($request->input('WholesaleFinal'));
-$group_bool = test_input($request->input('group-boolean'));
-$group_baracodes = test_input($request->input('group-baracodes'));
-$unitPrice=0;
-$sql_add_product="";
+echo '<head>    <link href="'. asset('css/FA.css') .'" rel="stylesheet"><link href="'.asset('css/error-productFound-StyleSheet.css').'" rel="stylesheet"></head>';
+echo '<style> .btn-huge{padding:60px 60px;font-size:3rem !important}</style>';
+
+
+
+
+
+
+$backButton = '<i onclick="window.history.go(-1)" class=" fixed-float-top-left fa-3x fas fa-arrow-alt-circle-left"></i>';
+
+
+
+    $productName =$request->input('productName');
+    $size =$request->input('size');
+    $category_id =$request->input('category');
+    $brand_id =$request->input('brand');
+    $currency_base =$request->input('currency_base');
+    $profit_type =$request->input('WholesaleFinal');
+    $group_bool =$request->input('group-boolean');
+    $group_baracodes =$request->input('group-baracodes');
+    $unitPrice=0;
+
+
+  
+  $hasProfit= $request->has('profit');
 
 if ($hasProfit){
 		$profit_percent = $request->input('profit');
@@ -29,8 +36,10 @@ if ($hasProfit){
 	}
 
 
-//echo $request->input('group-boolean')."<br>";
-if($group_bool ==  "false"){
+
+
+
+if($group_bool ==  "false" ){
   $group_bool = 0;
 }else if($group_bool == "true" ) {
   $group_bool = 1;
@@ -39,48 +48,26 @@ if($group_bool ==  "false"){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//detrmining profit_percentage and profit_type
 if($profit_type=="final"){
-  $profit_type="special";
+
+$profit_type="special";
   $profit_percent=0.001;
+
 }else if($profit_type=="wholesale"){
+
   $profit_type="special";
   $profit_percent=$profit_percent;
+
 }else if($profit_type=="wholesaleDefault"){
+
   $profit_type="global";
   $profit_percent= NULL;
 }
 
-////////
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// so that when you add a product with a group of baracodes it doesn't matter
 if($request->has('baracode')){
-  $baracode = test_input($request->input('baracode'));
+  $baracode = $request->input('baracode');
 }else{
 $baracode = "";
 }
@@ -88,11 +75,12 @@ $baracode = "";
 
 
 
-/// this part determines currency_base andn price  nad determines the sql query
-if($request->input('currency_base') == "dollar"){
 
 
+if($currency_base == "dollar"){
 
+
+///[^\d.]/
 if ($request->has('dollar-dollar')  and $request->input('dollar-dollar') != null) {
 $unitPrice = $request->input('dollar-dollar');
 $unitPrice = floatval(preg_replace('/[^\d.]/', '', $unitPrice));
@@ -106,224 +94,258 @@ $unitPrice = round($unitPrice,3);
     //
     
 }
-
-$sql_add_product = "INSERT INTO `products`(`id`, `product_name`, `baracode`, `unit_price`,`profit_percentage`,`profit_type`, `size`, `currency_base`,`category_id`,`brand_id` , `group_bool` , `group_baracodes`) VALUES ( null ,'$productName','$baracode','$unitPrice' , '$profit_percent' , '$profit_type' , '$size','dollar', '$category_id' , '$brand_id' ,'$group_bool' , '$group_baracodes')";
-
-if($profit_percent==null){
-$sql_add_product = "INSERT INTO `products`(`id`, `product_name`, `baracode`, `unit_price`,`profit_percentage`,`profit_type`, `size`, `currency_base`,`category_id`,`brand_id` , `group_bool` , `group_baracodes`) VALUES ( null ,'$productName','$baracode','$unitPrice' , null , '$profit_type' , '$size','dollar', '$category_id' , '$brand_id' ,'$group_bool' , '$group_baracodes')";
-
-  
-}
-
-
-
-
-}else if ($request->input('currency_base') == "lira"){
+}else if($currency_base  == "lira"){
 $unitPrice = $request->input('lira-lira');
- $unitPrice = floatval(preg_replace('/[^\d.]/', '', $unitPrice));
-$sql_add_product = "INSERT INTO `products`(`id`, `product_name`, `baracode`, `unit_price`,`profit_percentage`,`profit_type`, `size`, `currency_base`,`category_id`,`brand_id` , `group_bool` , `group_baracodes`) VALUES ( null ,'$productName','$baracode','$unitPrice' , '$profit_percent' , '$profit_type' , '$size','lira', '$category_id' , '$brand_id' ,'$group_bool' , '$group_baracodes')";
+  $unitPrice = floatval(preg_replace('/[^\d.]/', '', $unitPrice));
+$unitPrice = round($unitPrice,0);
+}
 
-if($profit_percent==null){
-$sql_add_product = "INSERT INTO `products`(`id`, `product_name`, `baracode`, `unit_price`,`profit_percentage`,`profit_type`, `size`, `currency_base`,`category_id`,`brand_id` , `group_bool` , `group_baracodes`) VALUES ( null ,'$productName','$baracode','$unitPrice' , null , '$profit_type' , '$size','lira', '$category_id' , '$brand_id' ,'$group_bool' , '$group_baracodes')";
+
+
+
+echo $group_baracodes."<br><br>";
+//echo $query_productName_count;
+/*
+
+
+*/
+
+
+/*
+DB::table('products')
+             ->insert([ 'id' => null,
+             'product_name' => $productName,
+              'baracode' => $baracode,
+              'unit_price' => $unitPrice,
+              'profit_percentage' => $profit_percent,
+              'profit_type' => $profit_type,
+              'size' => $size,
+              'currency_base' => $currency_base ,
+              'category_id' => $category_id,
+              'brand_id' => $brand_id,
+              'group_bool' => $group_bool,
+              'group_baracodes' => $group_baracodes
+
+             ]);
+*/
+   
+
+
+
+
+
+
+
+// starting a fixed transparent div covering the whole screen
+echo "<br><br><br><br><div class=''>"
+     ."<br><br><br>" ;
+
+
+
+
+
+
+$group_baracodes_CausingConflict_Array=[];
+$x1 = 0;
+$x11 = 0;
+$x2 = 0;
+$x22 = 0;
+
+  if($group_bool == 0){
+
+$query_productName = DB::table('products')->where('product_name',$productName)->get();
+$query_productName_count = $query_productName->count();
+
+
+$query_singleBaracode = DB::table('products')->where('baracode',$baracode)->get();
+$query_singleBaracode_count = $query_singleBaracode->count();
+
+
+$query_groupBaracodes = DB::table('products')->whereRaw("FIND_IN_SET('$baracode', group_baracodes)")->get();
+$query_groupBaracodes_count = $query_groupBaracodes->count();
+
+if($query_productName_count ==0 && $query_singleBaracode_count == 0 && $query_groupBaracodes_count ==0){
+  
+DB::table('products')
+             ->insert([ 'id' => null,
+             'product_name' => $productName,
+              'baracode' => $baracode,
+              'unit_price' => $unitPrice,
+              'profit_percentage' => $profit_percent,
+              'profit_type' => $profit_type,
+              'size' => $size,
+              'currency_base' => $currency_base ,
+              'category_id' => $category_id,
+              'brand_id' => $brand_id,
+              'group_bool' => $group_bool,
+              'group_baracodes' => $group_baracodes
+ ]);
+  echo "Product with single baracode added successfully<br><br>";
+
+
+ echo'<script>document.head.insertAdjacentHTML(\'afterbegin\', \'<link href="'. asset('css/app.css') .'" rel="stylesheet">\')</script>';
+
+
+   echo "<br>
+<div class='row justify-content-center'><div class='col-4'>
+ <form method='get' class='d-flex justify-content-center' action='"
+ .route('AddProduct').
+ "'>
+
+ <input type='submit'  class='btn btn-outline-danger btn-lg btn-huge btn-block' value='Add New'>
+ </form></div></div>";
+
+
+}else{ 
+  echo'<script>document.body.insertAdjacentHTML(\'afterbegin\', \'<div id="error"><div id="box"></div><h3> ERROR 550</h3><h2> The product already exists </h2><h2> المنتج تم ادخاله سابقا</h2> </div>\')</script>';
 
   
+  echo $backButton;
+  
+  
+  if($query_productName_count > 0){
+  
+    echo "<br><br><h3>Error!</h3><br>The Product Name For the group you ar adding is already in use with another group or product<br>";
+
+
+}else if($query_singleBaracode_count > 0){
+  
+echo "<br><br><h3>Error!</h3><br>The single baracode for the product you are adding is already in use with ".$query_singleBaracode_count." another single product<br>";
+
+}else if($query_groupBaracodes_count > 0){
+echo "<br><br><h3>Error!</h3><br>The single baracode for the product you are adding is already in use with ".$query_groupBaracodes_count." another group product<br>";
+
 }
 
+echo "<br><br><br><br>Product Name:".$productName."<br><br>";
+echo "Baracode:".$baracode."<br><br>";
+
 
 
 }
-//////////
 
+}else if($group_bool == 1){
 
 
 $group_baracodes_array = explode (",", $group_baracodes); 
 
 
-$cc1 = 0;
-$cc2 = 0;
-$cc1ex = 0 ;
-$cc2ex = 0 ;
-if($group_bool ==  1){
 
-echo '<script src="';
- echo asset('js/Public_jquery.min.js');
- echo '"></script>';
+$query_productName = DB::table('products')->where('product_name',$productName)->get();
+$query_productName_count = $query_productName->count();
 
+ foreach ($group_baracodes_array as $bar) {
 
-$sql_get_similar_productName = "SELECT * FROM products WHERE product_name = '$productName'";
-$result01 = mysqli_query( $DB , $sql_get_similar_productName);
-
-echo "<h3 id='error'></h3><br>";
-if(mysqli_num_rows($result01) > 0){
-  echo "<br><br>The Product Name For the group you ar adding is already in use with another group or product<br>";
-  echo "<script> $('#error').html('Error'); </script>";
-}
+$query_singleBaracode = DB::table('products')->where('baracode',$bar)->get();
+$query_singleBaracode_count = $query_singleBaracode->count();
 
 
-  foreach ($group_baracodes_array as $element) {
- $sql_get_similar_baracode = "SELECT * FROM products WHERE baracode= '$element' AND group_bool = 0";
+$query_groupBaracodes = DB::table('products')->whereRaw("FIND_IN_SET('$bar', group_baracodes)")->get();
+$query_groupBaracodes_count = $query_groupBaracodes->count();
 
-$sql_get_similar_baracode_group = "SELECT * FROM products WHERE group_bool = 1 AND FIND_IN_SET('$element', group_baracodes)";
-
-
-
-$result02 =mysqli_query( $DB , $sql_get_similar_baracode);
-$result03 = mysqli_query( $DB , $sql_get_similar_baracode_group);
-
-
-
-
-
-
-if(mysqli_num_rows($result02) > 0){
- $cc1++ ;
-}
-if(mysqli_num_rows($result03) > 0){
- $cc2++ ;
- $cc2ex += mysqli_num_rows($result03);
-}
-
-
-
-}
-
-
-
-if(mysqli_num_rows($result01) == 0 && mysqli_num_rows($result02) == 0 && mysqli_num_rows($result02) == 0){
-//Execute the insert mysql query
-mysqli_query($DB,$sql_add_product);
-
-echo "Group Product Added Succecfully!";
-
-echo $request->collect()."<br>";
- echo "Dollar-rate: ".$dollarRate."<br>".$unitPrice."<br>";
- echo '<br><br><br><h2>This page is intentionally made to display the _POST object of the Post request</h2>';
-
- 
- echo "<script>$('#hiddenInput').focus();</script>";
- echo "<br><form method='get' action='/AddProduct'><input id='hiddenInput' type='text'><input type='submit'  value='Add New'></form>";
- echo "<br>".($profit_percent==null);
- echo "<br>";
-}
-
-
-
-if($cc1 != 0){
-$cc1 = strval($cc1);
-echo "<br>".$cc1." of the baracodes you entered is used for another single product(s)<br>";
-echo "<script> $($('#error').html('Error'))</script>";
-}
-
-
-
-if($cc2 != 0){
-$cc2 = strval($cc2);
-echo "<br>".$cc2." of the baracodes you entered are causing ".$cc2ex." conflicts with other group product(s)<br>";
-echo "<script> $('#error').html('Error'); </script>";
-}
-
-
-
-
-
-}else if($group_bool == 0 ) {
+if($query_singleBaracode_count>0){
+  array_push($group_baracodes_CausingConflict_Array,$bar);
+  $x1++;
+  $x11 += $query_singleBaracode_count;
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-$sql_get_similar_baracode = "SELECT * FROM products WHERE baracode= '$baracode' AND group_bool = 0 ";
-$sql_get_similar_productName = "SELECT * FROM products WHERE product_name = '$productName'";
-$sql_get_similar_baracode_group = "SELECT * FROM products WHERE group_bool = 1 AND FIND_IN_SET('$baracode', group_baracodes)";
-
-
-
-$result =mysqli_query( $DB , $sql_get_similar_baracode);
-$result2 = mysqli_query( $DB , $sql_get_similar_productName);
-
-
-
-// so that when you add a product with a group of baracodes it doesn't matter
-if($request->has('baracode')){
-  $similar_baracode_count = mysqli_num_rows($result);
-}else{
-$similar_baracode_count = 0;
-}
-///
-
-
-
-
-if($similar_baracode_count == 0 and mysqli_num_rows($result2)==0 ){
-  mysqli_query($DB,$sql_add_product);
- echo $request->collect()."<br>";
- echo "Dollar-rate: ".$dollarRate."<br>".$unitPrice."<br>";
- echo '<script src="';
- echo asset('js/Public_jquery.min.js');
- echo '"></script><br><br><br><h2>This page is intentionally made to display the _POST object of the Post request</h2>';
-
- 
- echo "<script>$('#hiddenInput').focus();</script>";
- echo "<br><form method='get' action='/AddProduct'><input id='hiddenInput' type='text'><input type='submit'  value='Add New'></form>";
- echo "<br>".($profit_percent==null);
- echo "<br>";
- echo mysqli_error($DB);
-}else if($similar_baracode_count !=0 and mysqli_num_rows($result2)!=0){
-  echo '
-    <h3>Adding a normal product.</h3>
-    <h3>Both baracode and productName</h3>
-    <script>setTimeout(function(){window.location.href = "/error-productFound"},700);</script>
-
-';
-
-}else if($similar_baracode_count !=0){
-  echo '
-  <h3>Adding a normal product.</h3>
-    <h3>baracode</h3>
-    <script>setTimeout(function(){window.location.href = "/error-productFound"},700);</script>
-
-';
-}else if(mysqli_num_rows($result2)!=0){
-  echo '
-  <h3>Adding a normal product.</h3>
-     <h3>productName</h3>
-    <script>setTimeout(function(){window.location.href = "/error-productFound"},700);</script>
-';
 }
 
+if($query_groupBaracodes_count>0){
+  array_push($group_baracodes_CausingConflict_Array,$bar);
+  $x2++;
+  $x22+=$query_groupBaracodes_count;
+  
+}
+
+ }
+
+
+
+ if($x1 == 0   &&   $x2 == 0   &&    $x22 == 0 && $query_productName_count ==0){
+   DB::table('products')
+             ->insert([ 'id' => null,
+             'product_name' => $productName,
+              'baracode' => $baracode,
+              'unit_price' => $unitPrice,
+              'profit_percentage' => $profit_percent,
+              'profit_type' => $profit_type,
+              'size' => $size,
+              'currency_base' => $currency_base ,
+              'category_id' => $category_id,
+              'brand_id' => $brand_id,
+              'group_bool' => $group_bool,
+              'group_baracodes' => $group_baracodes
+ ]);
+
+ echo "Product with group of baracodes added successfully<br><br>";
+
+ echo'<script>document.head.insertAdjacentHTML(\'afterbegin\', \'<link href="'. asset('css/app.css') .'" rel="stylesheet">\')</script>';
+
+
+  echo "<br>
+<div class='row justify-content-center'><div class='col-4'>
+ <form method='get' class='d-flex justify-content-center' action='"
+ .route('AddProduct').
+ "'>
+
+ <input type='submit'  class='btn btn-outline-danger btn-lg btn-huge btn-block' value='Add New'>
+ </form></div></div>";
+
+
+ }else{
+
+
+ echo'<script>document.body.insertAdjacentHTML(\'afterbegin\', \'<div id="error"><div id="box"></div><h3> ERROR 550</h3><h2> The product already exists </h2><h2> المنتج تم ادخاله سابقا</h2> </div>\')</script>';
+
+
+echo $backButton;
+
+if($query_productName_count > 0){
+  echo "<br><br><h3>Error!</h3><br>The Product Name for the group product you are adding is already in use with another group or product<br>";
+}
+
+////
+
+if($x1 > 0){
+  echo "<br><br><h3>Error!</h3><br>".$x1." of the group baracodes for the group product you are adding is already in use with ".$x11." another single product<br>";
+}
+
+//////
+
+if($x2 > 0){
+  echo "<br><br><h3>Error!</h3><br>".$x2." of the group baracodes for the group product you are adding is already in use with ".$x22." another group product<br>";
+}
+
+/////
+echo "<br><br><br><br>Product Name:".$productName."<br><br>";
+
+
+////
+
+if($x2 > 0 || $x1 > 0){
+ echo "The group baracode causing conflict are:";
+
+foreach($group_baracodes_CausingConflict_Array as $bar){
+  echo "<br>".$bar;
+}
+echo"<br><br>";
+}
+
+ }
 
 }
 
- $product = DB::table('products')->where('product_name' , $productName)->get()  ;                              
-           echo"<br><br><h2>SQL Select query after adding the row: <br><br>";print_r($product);echo"</h2>"      ;
-    
 
-    DB::table('products_history_log')
-              ->insert(['id'=> $product[0]->id,
-                        'product_name'=>$product[0]->product_name,
-                        'baracode'=>$product[0]->baracode,
-                        'unit_price' => $product[0]->unit_price,
-                        'profit_percentage'=>$product[0]->profit_percentage,
-                        'profit_type'=>$product[0]->profit_type,
-                        'size'=>$product[0]->size,
-                        'category_id'=>$product[0]->category_id,
-                        'brand_id'=>$product[0]->brand_id,
-                        'currency_base'=>$product[0]->currency_base,
-                        'group_bool'=>$product[0]->group_bool,
-                        'group_baracodes'=>$product[0]->group_baracodes,
 
-            
-            ]);
-@endphp
 
- 
 
+
+
+
+
+
+echo "</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//ending the fullscreen
+
+
+?>

@@ -20,5 +20,6 @@ mix.js('resources/js/app.js', 'public/js')
     //.copy('node_modules/jszio/dist/jzip.min.js','storage/DataTables/pdfmake-unicode/')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/FA.scss', 'public/css')
+    .sass('resources/sass/error-productFound-StyleSheet.scss', 'public/css')
    // .copy('resources/js/viewAll/viewAll_script.js','public/js/viewAll')
    .sourceMaps();

@@ -77,6 +77,13 @@ getBrands();
 
 $("title").html("Add Product");
 $("#switch2").click();
+
+$(
+    setTimeout(function(){
+        	$("#brands , #categories").val(111);
+        }, 700)
+
+)
 </script>
 
 @endsection

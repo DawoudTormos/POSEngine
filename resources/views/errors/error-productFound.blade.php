@@ -9,10 +9,13 @@
         }
         .fixed-float-top-left{
             position:fixed;
+            z-index:4;
             top:3vh;
             left:3vw;
 
         }
+        
+
         
         body {
             display: grid;
@@ -321,10 +324,14 @@
         @endsection
 
     @section('content')
+
+
     <div id="error">
   <div id="box"></div>
   <h3> ERROR 550</h3>
   <h2> The product already exists </h2>
   <h2> المنتج تم ادخاله سابقا</h2> </div>
     <i onclick="window.history.go(-2)" class=" fixed-float-top-left fa-3x fas fa-arrow-alt-circle-left"></i>
+
+
 @endsection

@@ -1,11 +1,11 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/error-productFound-StyleSheet.css": "/css/error-productFound-StyleSheet.css",
     "/css/FA.css": "/css/FA.css",
     "/js/jquery.min.js": "/js/jquery.min.js",
     "/js/test.js": "/js/test.js",
     "/storage/DataTables/pdfmake-unicode/pdfmake.min.js": "/storage/DataTables/pdfmake-unicode/pdfmake.min.js",
     "/storage/DataTables/pdfmake-unicode/pdfmake.min.js.map": "/storage/DataTables/pdfmake-unicode/pdfmake.min.js.map",
-    "/storage/DataTables/jszip/jszip.min.js": "/storage/DataTables/jszip/jszip.min.js",
-    "/js/viewAll/viewAll_script.js": "/js/viewAll/viewAll_script.js"
+    "/storage/DataTables/jszip/jszip.min.js": "/storage/DataTables/jszip/jszip.min.js"
 }

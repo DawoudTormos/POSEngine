@@ -78,15 +78,12 @@ class PagesController extends Controller
         
         if($dollarRate == null){$dollarRate = 0;};
 
-        $hasProfit= $request->has('profit');
-
-        $productName =  $request->input('productName');                             
         
         return view('php-scripts/addProduct-post',[ 'request' =>$request,
                                                     'DB'=>$DB,
                                                     'dollarRate'=>$dollarRate,
-                                                    'hasProfit' =>$hasProfit,
-                                                    'productName' =>$productName
+                                                    
+                                                   
                                                 ]);
         
 
