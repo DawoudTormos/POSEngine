@@ -22,7 +22,7 @@ To download and run this app</h3>
 
 <h3> Requirements</h3>
 <ul>
-  <li>The php version used in development and proven to work is 8.1.2</li>
+  <li>The php version used in development and guaranteed to work is 8.1.2</li>
   <li>The app is built on Laravel Framework 8.77.1 but this doesn't require who wants to install it to do anything.</li>
   <li>The version of all the required packages are included in the composer.json package.json </li>
   
