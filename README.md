@@ -4,7 +4,7 @@ To download and run this app</h3>
   <li>You have to have composer and npm installed.</li>
   <li>Run the command "npm i" make npm read the package.json file and download all the needed dependencies in node_modules folder.</li>
   <li>Run the command "composer install" to make composer download all the needed dependencies in vendor folder.</li>
-  <li>you haver to run "npm run dev " or "npm run production" in order to compile assests that are found in folders with .gitignore files and thus wasn't uploaded.</li>
+  <li>you haver to run "npm run dev " or "npm run production" in order to compile assests.</li>
   <li>To make backup-larvel work you should edit the dump_binary_path in config/database.php. This path is usually /xampp/mysql/bin/ for xampp.</li>
 <li> 
     <ul>To configure the path to where backups are saved:</ul>
