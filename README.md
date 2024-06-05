@@ -38,12 +38,12 @@ To download and run this app</h3>
 \config\backup.php
 
 ## they were copied as following:
-#                                   Copied File [\vendor\spatie\laravel-backup\config\backup.php] To [\config\backup.php]
-#                                   Copied Directory [\vendor\spatie\laravel-backup\resources\lang] To [\resources\lang\vendor\backup]
-#
-#   by this command:: php artisan vendor:publish --provider="Spatie\Backup\BackupServiceProvider"
+                                   Copied File [\vendor\spatie\laravel-backup\config\backup.php] To [\config\backup.php]
+                                   Copied Directory [\vendor\spatie\laravel-backup\resources\lang] To [\resources\lang\vendor\backup]
 
-#   After installing the laravel-backup package with    composer require "spatie/laravel-backup:^7.0.0"
+   by this command:: php artisan vendor:publish --provider="Spatie\Backup\BackupServiceProvider"
+
+   After installing the laravel-backup package with    composer require "spatie/laravel-backup:^7.0.0"
 
 </pre>
 
