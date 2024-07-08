@@ -1,3 +1,6 @@
+# POSEngine
+An inventory and Point-Of-Sale software. The program is a web application with integration to IOT devices. The app's stack is Laravel,PHP,MYSQl,Jquery and Bootstrap.
+
 <h3>Notes by the developer Dawoud:
 To download and run this app</h3>
 <ul>
