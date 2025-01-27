@@ -84,19 +84,6 @@ Watch the application in action! (Attach your demo video here)
 
 ---
 
-## 📸 Screenshots
-
-### Dashboard
-A clean, intuitive interface for managing products and transactions.
-
-*(Attach a screenshot of the dashboard)*
-
-### Product Management
-Easily add, edit, and group products.
-
-*(Attach a screenshot of the product management page)*
-
----
 
 ## 📝 License
 This project is open-source and available under the [MIT License](LICENSE).
