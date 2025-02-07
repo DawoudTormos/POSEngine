@@ -40,7 +40,7 @@ POSEngine is a robust **Point-of-Sale (POS)** software tailored to meet the spec
 - PHP 8.1.2 (used during development and guaranteed to work)
 - MySQL 5.7+
 - Composer
-- Node.js (for frontend assets if needed)
+
 
 ### Notes:
 - The application is built on **Laravel Framework 8.77.1**, but no additional steps are required for this version during installation.
